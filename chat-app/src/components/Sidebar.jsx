@@ -10,7 +10,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZgv4LjrGxZePfhj_dnmLKQdVvkGbPHX0IsA&s" />
+        <Avatar src="https://api.dicebear.com/9.x/dylan/svg?seed=Loki" />
         <div className="sidebar__headerRight">
           <IconButton>
             <DonutLargeIcon />
