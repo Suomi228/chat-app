@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, IconButton } from "@material-ui/core";
 import { AttachFile, MoreVert, SearchOutlined, InsertEmoticon } from "@material-ui/icons";
 import MicIcon from "@material-ui/icons/Mic";
