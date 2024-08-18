@@ -5,10 +5,10 @@ import React, { useEffect, useState } from "react";
 import Pusher from "pusher-js";
 import axios from "./components/axios";
 import Login from "./components/Login";
-import { useStateValue } from './components/StateProvider';
+import { useStateValue } from "./components/StateProvider";
 function App() {
   const [messages, setMessages] = useState([]);
-  const [{ user }, dispatch] = useStateValue()
+  const [{ user }, dispatch] = useStateValue();
   useEffect(() => {
     axios.get("/messages/sync").then((res) => {
       setMessages(res.data);
@@ -34,7 +34,7 @@ function App() {
         <Login />
       ) : (
         <div className="app__body">
-          <Sidebar />
+          <Sidebar messages={messages} />
           <Chat messages={messages} />
         </div>
       )}

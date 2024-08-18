@@ -6,11 +6,13 @@ import ChatIcon from "@material-ui/icons/Chat";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Avatar, IconButton } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
-const Sidebar = () => {
+import { useStateValue } from './StateProvider';
+const Sidebar = ({ messages }) => {
+  const [{ user }, dispatch] = useStateValue();
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar src="https://api.dicebear.com/9.x/dylan/svg?seed=Loki" />
+        <Avatar src={user?.photoURL} />
         <div className="sidebar__headerRight">
           <IconButton>
             <DonutLargeIcon />
@@ -30,9 +32,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="sidebar__chats">
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
+      <SidebarChat messages={messages} />
       </div>
     </div>
   );

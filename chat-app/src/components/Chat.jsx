@@ -10,14 +10,16 @@ import {
 import MicIcon from "@material-ui/icons/Mic";
 import axios from "./axios";
 import "./Chat.css";
+import { useStateValue } from "./StateProvider";
 const names = ["Sam", "Angel", "Oliver", "Lola", "Cookie", "Annie"];
 const Chat = ({ messages }) => {
   const [seed, setSeed] = useState("");
   const [input, setInput] = useState("");
+  const [{ user }, dispatch] = useStateValue();
   const sendMessage = async (e) => {
     e.preventDefault();
     const newMessage = {
-      name: "suomi",
+      name: user.displayName,
       message: input,
       timestamp: new Date().toLocaleString(),
       received: true,
@@ -38,8 +40,8 @@ const Chat = ({ messages }) => {
       <div className="chat__header">
         <Avatar src={`https://api.dicebear.com/9.x/dylan/svg?seed=${seed}`} />
         <div className="chat__headerInfo">
-          <h3>Room Name</h3>
-          <p>Last seen at...</p>
+          <h3>Dev Help</h3>
+          <p>Last seen at {messages[messages.length - 1]?.timestamp}</p>
         </div>
         <div className="chat__headerRight">
           <IconButton>
@@ -57,7 +59,9 @@ const Chat = ({ messages }) => {
         {messages.map((message) => (
           // eslint-disable-next-line react/jsx-key
           <p
-            className={`chat__message ${message.received && "chat__receiver"}`}
+            className={`chat__message ${
+              message.name === user.displayName && "chat__receiver"
+            }`}
           >
             <span className="chat__name">{message.name}</span>
             {message.message}
@@ -74,7 +78,9 @@ const Chat = ({ messages }) => {
             placeholder="Type a message"
             type="text"
           />
-          <button onClick={sendMessage} type="submit">Send a message</button>
+          <button onClick={sendMessage} type="submit">
+            Send a message
+          </button>
         </form>
         <MicIcon />
       </div>
