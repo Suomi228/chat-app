@@ -40,7 +40,7 @@ const Chat = ({ messages }) => {
       <div className="chat__header">
         <Avatar src={`https://api.dicebear.com/9.x/dylan/svg?seed=${seed}`} />
         <div className="chat__headerInfo">
-          <h3>Dev Help</h3>
+          <h3>Group chat</h3>
           <p>Last seen at {messages[messages.length - 1]?.timestamp}</p>
         </div>
         <div className="chat__headerRight">
